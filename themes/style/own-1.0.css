@@ -226,3 +226,7 @@ footer {
       margin: 0 auto!important;
       display: block!important;
     }
+
+    .subheadline {
+      padding-top: 2em!important;
+    }

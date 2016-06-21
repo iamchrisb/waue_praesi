@@ -39,14 +39,18 @@
 		
 		<section class="slide" id="title">
 			<h1>
+				<div>
 				Content-Boosted Collaborative Filtering (CBCF) for Improved Recommendations 
+				</div>
+				<div class="subheadline">
+					Christopher Bleckmann 
+				</div>
 			</h1>
 		</section>
 
 		<section class="slide" id="intro">
-			<h2 style="visibility:hidden;">bean</h2>
+			<h2>Do you know.. ?</h2>
 			<img src="pictures/mrbean.jpg" class="centered" />
-
 		</section>	
 
 		<section class="slide" id="what-is-cbf">
@@ -72,10 +76,16 @@
 			<p>
 				<ul>
 					<li>
-						based on a cognitive/pychological metapher  
+						based on cognitive psychology   
 					</li>
 					<li>
-						creates groups of users (neighbors)
+						collect user feedback in form of ratings
+					</li>
+					<li>
+						exploit rating similarities behaviour amongst several users 
+					</li>
+					<li>
+						can be subdevided in neighborhood- and model-based approaches
 					</li>
 					<li>
 						creates recommendations based on your neighbors likes
@@ -93,7 +103,13 @@
 					performs on domains with less content associated items
 				</li>
 				<li>
-					performs on hard analysable content e.g. opinions, ideas
+					ability to filter based on the taste 
+				</li>
+				<li>
+					ability to filter based on qualities beyond content
+				</li>
+				<li>
+					it provides serendipitous recommendations
 				</li>
 			</ul>
 			<h2>
@@ -101,10 +117,10 @@
 			</h2>
 			<ul>
 				<li>
-					performs on domains with less content associated items
+					cold-start problem: an item can not be recommended unless a user has rated it 
 				</li>
 				<li>
-					performs on hard analysable content e.g. opinions, ideas
+					sparsity: most users do not rate items (system with high item-to-user ratio)
 				</li>
 			</ul>
 			<a class="image" href="pictures/compare_cf_cb.png" data-lightbox="dashboard" ><img src="pictures/compare_cf_cb.png" width="10%" height="10%"/></a>
@@ -116,15 +132,25 @@
 			</h2>
 			<ul>
 				<li>
-					create/build a hybrid filtering method 
+					build a kind of hybrid filtering method 
 				</li>
 				<li>
 					overcome the CF based problems 
 				</li>
 				<li>
+					reduce information overload 
+				</li>
+				<li>
 					increase user satisfaction with better results
 				</li>
+				<li>
+					create recommendations and predict ratings (movies in this case) (!) 
+				</li>
+				<li>
+					create an experimental comparison between pure cb, pure cf and a hybrid version (!) 
+				</li>
 			</ul>
+			<a class="image" href="pictures/prediction_matrix.png" data-lightbox="dashboard" ><img src="pictures/prediction_matrix.png" width="10%" height="10%"/></a>
 		</section>
 
 		<section class="slide" id="domain">
@@ -154,7 +180,145 @@
 			<h2>
 				System
 			</h2>
-			<img src="pictures/system.png" class="centered" />
+			<ul>
+				<li>
+					use a webcrawler to get and combine user-ratings with movie data
+				</li>
+				<li>
+					EachMovie dataset provides a very sparse user-rating that creates user-ratings vector
+				</li>
+				<li>
+					we use content-based predictor to create full ratings matrix (pseudo user-ratings vector +  user-ratings vector)
+				</li>
+				<li>
+					make predictions with a given active user's ratings using CF on full pseudo ratings matrix
+				</li>
+				
+			</ul>
+			<a class="image" href="pictures/system.png" data-lightbox="dashboard" ><img src="pictures/system.png" width="10%" height="10%"/></a>
+		</section>
+
+		<section class="slide" id="pure-cb">
+			<h2>
+				Pure Content-based Predictor
+			</h2>
+			<ul>
+				<li>
+					implementation of a bag-of-words naive Bayesian text classifier
+				</li>
+				<li>
+					each bag-of-words corresponds to a movie-feature
+				</li>
+				<li>
+					use the classifier to create a user-profile 
+				</li>
+				<li>
+					use the learned profile to predict ratings
+				</li>
+				
+			</ul>
+			<a class="image" href="pictures/system.png" data-lightbox="dashboard" ><img src="pictures/system.png" width="10%" height="10%"/></a>
+		</section>
+
+		<section class="slide" id="pure_cf">
+			<h2>
+				Pure Collaborative Filtering
+			</h2>
+			<ul>
+				<li>
+					implementation of a neighborhood-based algorithm
+				</li>
+				<li>
+					chose a subset of users based on similarity with the active user 
+				</li>
+				<li>
+					combine this with a weighted rating 
+				</li>
+				<li>
+					use a Significance Weighting factor to reduce the impact of sparsity
+				</li>
+				
+			</ul>
+			<a class="image" href="pictures/system.png" data-lightbox="dashboard" ><img src="pictures/system.png" width="10%" height="10%"/></a>
+		</section>
+
+		<section class="slide" id="cbcf">
+			<h2>
+				Content-Boosted Collaborative Filtering (CBCF)
+			</h2>
+			<ul>
+				<li>
+					not only a naive combination (simple mix up of cb and cf based results)
+				</li>
+				<li>
+					create a pseudo user-ratings vector for every user out of cb-
+				</li>
+				<li>
+					use Harmonic Mean Weighting to increase accuracy of the pseudo user-ratings vector
+				</li>
+				<a class="image" href="pictures/pseudo_rating_equasion.png" data-lightbox="dashboard" ><img src="pictures/pseudo_rating_equasion.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/mean_weight_equasion.png" data-lightbox="dashboard" ><img src="pictures/mean_weight_equasion.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/hybrid_correlation_equasion.png" data-lightbox="dashboard" ><img src="pictures/hybrid_correlation_equasion.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/self_weight_equasion.png" data-lightbox="dashboard" ><img src="pictures/self_weight_equasion.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/final_equasion.png" data-lightbox="dashboard" ><img src="pictures/final_equasion.png" width="10%" height="10%"/></a>
+			</ul>
+		</section>
+
+		<section class="slide" id="math-inc">
+			<h2>Some Math incoming.. </h2>
+			<img src="pictures/brace.jpg" class="centered" />
+		</section>	
+
+		<section class="slide" id="results">
+			<h2>
+				Results
+			</h2>
+			<ul>
+				<li>
+					eliminated the cold-start/first-rater problem
+				</li>
+				<li>
+					also eliminated the sparsity problem
+				</li>
+				<li>
+					decreased the mean absolute error (MAE) (to measure statistical accuracy)
+				</li>
+				<li>
+					increased the Receiver Operating Characteristics (ROC) sensitivity (measure decision support accuracy)	 
+				</li>
+			</ul>
+		</section>
+
+		<section class="slide" id="improvements">
+			<h2>
+				Possible Improvements
+			</h2>
+			<ul>
+				<li>
+					finding better neighbors
+				</li>
+				<li>
+					use a locally weighted regression for the CB predictor 
+				</li>
+				<li>
+					improve CF with a Clustered Pearson Predictor
+				</li>
+
+			</ul>
+		</section>
+
+		<section class="slide" id="domain">
+			<h2>
+				Other Problems
+			</h2>
+			<ul>
+				<li>
+					gray sheep: users who don't fit in any group
+				</li>
+				<li>
+					shilling attack: positive rating of my own stuff 
+				</li>
+			</ul>
 		</section>
 		
 		<section class="slide" id="danke">
