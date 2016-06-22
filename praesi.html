@@ -236,11 +236,15 @@
 				</li>
 				<li>
 					use a Significance Weighting factor to reduce the impact of sparsity
-				</li>
-				
+				</li>				
 			</ul>
 			<a class="image" href="pictures/system.png" data-lightbox="dashboard" ><img src="pictures/system.png" width="10%" height="10%"/></a>
 		</section>
+
+		<section class="slide" id="math-inc">
+			<h2>Some Math incoming.. </h2>
+			<img src="pictures/brace.jpg" class="centered" />
+		</section>	
 
 		<section class="slide" id="cbcf">
 			<h2>
@@ -251,10 +255,16 @@
 					not only a naive combination (simple mix up of cb and cf based results)
 				</li>
 				<li>
-					create a pseudo user-ratings vector for every user out of cb-
+					create a pseudo user-ratings vector for every user out of cb filtering and actual ratings of the active user
 				</li>
 				<li>
 					use Harmonic Mean Weighting to increase accuracy of the pseudo user-ratings vector
+				</li>
+				<li>
+					obtain the hybrid correlation weight
+				</li>
+				<li>
+					use the denominator as a normalization factor (all weights sum to one)
 				</li>
 				<a class="image" href="pictures/pseudo_rating_equasion.png" data-lightbox="dashboard" ><img src="pictures/pseudo_rating_equasion.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/mean_weight_equasion.png" data-lightbox="dashboard" ><img src="pictures/mean_weight_equasion.png" width="10%" height="10%"/></a>
@@ -263,11 +273,6 @@
 				<a class="image" href="pictures/final_equasion.png" data-lightbox="dashboard" ><img src="pictures/final_equasion.png" width="10%" height="10%"/></a>
 			</ul>
 		</section>
-
-		<section class="slide" id="math-inc">
-			<h2>Some Math incoming.. </h2>
-			<img src="pictures/brace.jpg" class="centered" />
-		</section>	
 
 		<section class="slide" id="results">
 			<h2>
