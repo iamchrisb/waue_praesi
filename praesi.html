@@ -53,22 +53,28 @@
 			<img src="pictures/mrbean.jpg" class="centered" />
 		</section>	
 
+		<section class="slide" id="departed">
+			<h1>Content Boosted | Collaborative Filtering <span style="font-size: 30px!important; padding-top: 1.5em;">...find the right thing</span></h1>
+		</section>
+
 		<section class="slide" id="what-is-cbf">
 			<h2>
 				What is Content Based Filtering?
 			</h2>
 			<ul>
 				<li>
-					based on article or item analysis  
+					based on article or item analysis (content) 
 				</li>
 				<li>
-					find similar articles to recommend not user  
+					find similar articles to recommend   
 				</li>
 				<li>
 					e.g. naive bayes text classification algorithm  
 				</li>
+				<li>
+					matches a word to a class with the highest possibility  
+				</li>
 			</ul>
-
 		</section>
 
 		<section class="slide" id="what-is-acf">
@@ -92,6 +98,7 @@
 					</li>			
 				</ul>
 			</p>
+			<a class="image" href="pictures/compare_cf_cb.png" data-lightbox="dashboard" ><img src="pictures/compare_cf_cb.png" width="10%" height="10%"/></a>
 		</section>
 
 		<section class="slide" id="the-good-and-bad">
@@ -123,7 +130,6 @@
 					sparsity: most users do not rate items (system with high item-to-user ratio)
 				</li>
 			</ul>
-			<a class="image" href="pictures/compare_cf_cb.png" data-lightbox="dashboard" ><img src="pictures/compare_cf_cb.png" width="10%" height="10%"/></a>
 		</section>
 
 		<section class="slide" id="target">
@@ -270,16 +276,16 @@
 				<li>
 					use the denominator as a normalization factor (all weights sum to one)
 				</li>
+				<a class="image" href="pictures/final_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/final_equasion_1.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/pseudo_rating_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/pseudo_rating_equasion_1.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/mean_weight_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/mean_weight_equasion_1.png" width="10%" height="10%"/></a>
-				<a class="image" href="pictures/hybrid_correlation_equasion.png" data-lightbox="dashboard" ><img src="pictures/hybrid_correlation_equasion.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/hybrid_correlation_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/hybrid_correlation_equasion_1.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/self_weight_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/self_weight_equasion_1.png" width="10%" height="10%"/></a>
-				<a class="image" href="pictures/final_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/final_equasion_1.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/pearson_correlation_1.png" data-lightbox="dashboard" ><img src="pictures/pearson_correlation_1.png" width="10%" height="10%"/></a>
 			</ul>
 		</section>
 
-		<section class="slide" id="results">
+		<section class="slide" id="methology">
 			<h2>
 				Methology
 			</h2>
@@ -294,10 +300,20 @@
 					10% of the users were randomly selected
 				</li>
 				<li>
-					increased the Receiver Operating Characteristics (ROC) sensitivity (measure decision support accuracy)	 
+					25% withheld 
 				</li>
-
-				<a class="image" href="pictures/prediction_accuracy_sparsity.png" data-lightbox="dashboard" ><img src="pictures/prediction_accuracy_sparsity.png" width="10%" height="10%"/></a>
+				<li>
+					Mean Absolute Error (MAE) measures statistical accuracy 
+				</li>
+				<li>
+					Receiver Operatings Characteristics (ROC) measures decision-support accuracy 
+				</li>
+				<li>
+					in this case ROC-4 because the threshold is 4
+				</li>
+				<li>
+					ROC sensity reaches from 0 - 1, where 1 is ideal and 0.5 is random
+				</li>
 			</ul>
 		</section>
 
@@ -313,13 +329,14 @@
 					also eliminated the sparsity problem
 				</li>
 				<li>
-					decreased the mean absolute error (MAE) (to measure statistical accuracy)
+					decreased the MAE
 				</li>
 				<li>
-					increased the Receiver Operating Characteristics (ROC) sensitivity (measure decision support accuracy)	 
+					increased the ROC-4 sensitivity  
 				</li>
 
 				<a class="image" href="pictures/prediction_accuracy_sparsity.png" data-lightbox="dashboard" ><img src="pictures/prediction_accuracy_sparsity.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/graphic_mae_roc.png" data-lightbox="dashboard" ><img src="pictures/graphic_mae_roc.png" width="10%" height="10%"/></a>
 			</ul>
 		</section>
 
