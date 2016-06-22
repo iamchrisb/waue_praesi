@@ -207,10 +207,13 @@
 					implementation of a bag-of-words naive Bayesian text classifier
 				</li>
 				<li>
-					each bag-of-words corresponds to a movie-feature
+					add the function to handle bag-of-words vector
 				</li>
 				<li>
-					use the classifier to create a user-profile 
+					each bag-of-words corresponds to a movie-feature (title, cast, etc.)
+				</li>
+				<li>
+					learn a user-profile from a set of rated movies
 				</li>
 				<li>
 					use the learned profile to predict ratings
@@ -218,11 +221,6 @@
 				
 			</ul>
 			<a class="image" href="pictures/system.png" data-lightbox="dashboard" ><img src="pictures/system.png" width="10%" height="10%"/></a>
-		</section>
-
-		<section class="slide" id="math-inc">
-			<h2>Some Math incoming.. </h2>
-			<img src="pictures/brace.jpg" class="centered" />
 		</section>	
 
 
@@ -235,7 +233,7 @@
 					implementation of a neighborhood-based algorithm
 				</li>
 				<li>
-					chose a subset of users based on similarity with the active user 
+					chose a subset of users based on similarity with the agctive user 
 				</li>
 				<li>
 					combine this with a weighted rating 
@@ -245,6 +243,11 @@
 				</li>				
 			</ul>
 			<a class="image" href="pictures/system.png" data-lightbox="dashboard" ><img src="pictures/system.png" width="10%" height="10%"/></a>
+		</section>
+
+		<section class="slide" id="math-inc">
+			<h2>Some Math incoming.. </h2>
+			<img src="pictures/brace.jpg" class="centered" />
 		</section>
 
 		<section class="slide" id="cbcf">
@@ -268,10 +271,33 @@
 					use the denominator as a normalization factor (all weights sum to one)
 				</li>
 				<a class="image" href="pictures/pseudo_rating_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/pseudo_rating_equasion_1.png" width="10%" height="10%"/></a>
-				<a class="image" href="pictures/mean_weight_equasion.png" data-lightbox="dashboard" ><img src="pictures/mean_weight_equasion.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/mean_weight_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/mean_weight_equasion_1.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/hybrid_correlation_equasion.png" data-lightbox="dashboard" ><img src="pictures/hybrid_correlation_equasion.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/self_weight_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/self_weight_equasion_1.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/final_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/final_equasion_1.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/pearson_correlation_1.png" data-lightbox="dashboard" ><img src="pictures/pearson_correlation_1.png" width="10%" height="10%"/></a>
+			</ul>
+		</section>
+
+		<section class="slide" id="results">
+			<h2>
+				Methology
+			</h2>
+			<ul>
+				<li>
+					compare cbcf with pure cb, pure cf and a naive hybrid approach
+				</li>
+				<li>
+					naive hybrid takes average of pure cb and cf generated ratings
+				</li>
+				<li>
+					10% of the users were randomly selected
+				</li>
+				<li>
+					increased the Receiver Operating Characteristics (ROC) sensitivity (measure decision support accuracy)	 
+				</li>
+
+				<a class="image" href="pictures/prediction_accuracy_sparsity.png" data-lightbox="dashboard" ><img src="pictures/prediction_accuracy_sparsity.png" width="10%" height="10%"/></a>
 			</ul>
 		</section>
 
