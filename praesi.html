@@ -51,7 +51,11 @@
 		<section class="slide" id="intro">
 			<h2>Do you know.. ?</h2>
 			<img src="pictures/mrbean.jpg" class="centered" />
-		</section>	
+		</section>
+
+		<section class="slide" id="departed">
+ 			<h1>Content Boosted | Collaborative Filtering <span style="font-size: 30px!important; padding-top: 1.5em;">...find the right thing</span></h1>
+ 		</section>	
 
 		<section class="slide" id="what-is-cbf">
 			<h2>
@@ -59,14 +63,20 @@
 			</h2>
 			<ul>
 				<li>
-					based on article or item analysis  
+					based on article or item analysis (content)
 				</li>
 				<li>
-					find similar articles to recommend not user  
+					find similar articles to recommend 
 				</li>
 				<li>
 					e.g. naive bayes text classification algorithm  
+					<ul>
+						<li>
+ 							matches a word to a class with the highest possibility  
+ 						</li>
+					</ul>
 				</li>
+				
 			</ul>
 
 		</section>
@@ -90,6 +100,7 @@
 					<li>
 						creates recommendations based on your neighbors likes
 					</li>			
+					<a class="image" href="pictures/compare_cf_cb.png" data-lightbox="dashboard" ><img src="pictures/compare_cf_cb.png" width="10%" height="10%"/></a>
 				</ul>
 			</p>
 		</section>
@@ -123,7 +134,6 @@
 					sparsity: most users do not rate items (system with high item-to-user ratio)
 				</li>
 			</ul>
-			<a class="image" href="pictures/compare_cf_cb.png" data-lightbox="dashboard" ><img src="pictures/compare_cf_cb.png" width="10%" height="10%"/></a>
 		</section>
 
 		<section class="slide" id="target">
@@ -220,7 +230,7 @@
 				</li>
 				
 			</ul>
-			<a class="image" href="pictures/system.png" data-lightbox="dashboard" ><img src="pictures/system.png" width="10%" height="10%"/></a>
+			
 		</section>	
 
 
@@ -233,16 +243,16 @@
 					implementation of a neighborhood-based algorithm
 				</li>
 				<li>
-					chose a subset of users based on similarity with the agctive user 
+					chose a subset of users based on similarity with the active user 
 				</li>
 				<li>
-					combine this with a weighted rating 
+					create prediction based on the combination from the neighbor-hood selected user ratings
 				</li>
 				<li>
 					use a Significance Weighting factor to reduce the impact of sparsity
 				</li>				
 			</ul>
-			<a class="image" href="pictures/system.png" data-lightbox="dashboard" ><img src="pictures/system.png" width="10%" height="10%"/></a>
+			
 		</section>
 
 		<section class="slide" id="math-inc">
@@ -262,6 +272,9 @@
 					create a pseudo user-ratings vector for every user out of cb filtering and actual ratings of the active user
 				</li>
 				<li>
+					use self weighting factor to give the pseudo active user more impact
+				</li>
+				<li>
 					use Harmonic Mean Weighting to increase accuracy of the pseudo user-ratings vector
 				</li>
 				<li>
@@ -270,16 +283,16 @@
 				<li>
 					use the denominator as a normalization factor (all weights sum to one)
 				</li>
+				<a class="image" href="pictures/final_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/final_equasion_1.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/self_weight_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/self_weight_equasion_1.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/pseudo_rating_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/pseudo_rating_equasion_1.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/mean_weight_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/mean_weight_equasion_1.png" width="10%" height="10%"/></a>
-				<a class="image" href="pictures/hybrid_correlation_equasion.png" data-lightbox="dashboard" ><img src="pictures/hybrid_correlation_equasion.png" width="10%" height="10%"/></a>
-				<a class="image" href="pictures/self_weight_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/self_weight_equasion_1.png" width="10%" height="10%"/></a>
-				<a class="image" href="pictures/final_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/final_equasion_1.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/hybrid_correlation_equasion_1.png" data-lightbox="dashboard" ><img src="pictures/hybrid_correlation_equasion_1.png" width="10%" height="10%"/></a>
 				<a class="image" href="pictures/pearson_correlation_1.png" data-lightbox="dashboard" ><img src="pictures/pearson_correlation_1.png" width="10%" height="10%"/></a>
 			</ul>
 		</section>
 
-		<section class="slide" id="results">
+		<section class="slide" id="methodology">
 			<h2>
 				Methology
 			</h2>
@@ -294,10 +307,41 @@
 					10% of the users were randomly selected
 				</li>
 				<li>
-					increased the Receiver Operating Characteristics (ROC) sensitivity (measure decision support accuracy)	 
+					25% withheld 
 				</li>
+			</ul>
+		</section>
 
-				<a class="image" href="pictures/prediction_accuracy_sparsity.png" data-lightbox="dashboard" ><img src="pictures/prediction_accuracy_sparsity.png" width="10%" height="10%"/></a>
+		<section class="slide" id="evaluation">
+			<h2>
+				Evaluation
+			</h2>
+			<ul>
+ 				<li>
+ 					Mean Absolute Error (MAE) 
+ 					<ul>
+ 						<li>
+ 							measures statistical accuracy 
+ 						</li>
+ 						<li>
+ 							determines the accuracy of predictions using the average
+ 						</li>
+ 					</ul>
+ 				</li>
+ 				<li>
+ 					Receiver Operatings Characteristics (ROC)
+ 					<ul>
+ 						<li>
+ 							measures decision-support accuracy 
+ 						</li>
+ 						<li>
+ 							in this case ROC-4 because the threshold is 4
+		 				</li>
+		 				<li>
+		 					ROC sensity reaches from 0 - 1, where 1 is ideal and 0.5 is random
+		  				</li>
+ 					</ul>
+ 				</li>
 			</ul>
 		</section>
 
@@ -313,16 +357,14 @@
 					also eliminated the sparsity problem
 				</li>
 				<li>
-					decreased the mean absolute error (MAE) (to measure statistical accuracy)
+					decreased the MAE
 				</li>
 				<li>
-					decreased the mean absolute error (MAE) (to measure statistical accuracy)
-				</li>
-				<li>
-					increased the Receiver Operating Characteristics (ROC) sensitivity (measure decision support accuracy)	 
+					increased the ROC-4 sensitivity  
 				</li>
 
 				<a class="image" href="pictures/prediction_accuracy_sparsity.png" data-lightbox="dashboard" ><img src="pictures/prediction_accuracy_sparsity.png" width="10%" height="10%"/></a>
+				<a class="image" href="pictures/graphic_mae_roc.png" data-lightbox="dashboard" ><img src="pictures/graphic_mae_roc.png" width="10%" height="10%"/></a>
 			</ul>
 		</section>
 
